@@ -16,3 +16,17 @@ Features of Quiz App:
     in sort summary shows the how much the answer is correct , how much is wrong and how much is not attempted.in long summary show all the
     questions and the your choose ans and predefined answer. and ecah question block having some specific color,if the block is green the answer you choose is correct, if it red then it wrong and gray show the answer is not attempted.
 9] At last there is the about us page which show the details of the our group members.
+
+
+How to run in your machine : (dependencies)
+
+1] in your PC PYTHON is present it good. if not install the pyhton from their web site.
+  (if you want to check python present in you pc or not 
+  1] go to the terminal and run this command  [python --version] if it show the version the it present in your machine)
+
+2] The project zip file exract in any folder and open with any code editor (i use the vscode)
+3] open the terminal in this folder path and first you want to install the django in your machine
+   Run this command :[ pip install django ]then [ pip install pillow ]
+
+4] it time to run our server by this command : [python manage.py runserver]
+5] The admin username and password is username: quiz and password: quiz@123
