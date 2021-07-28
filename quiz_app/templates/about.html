@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}About Us | Quiz App{% endblock title %}
+
+{% block css_link %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+
+{% endblock css_link %}
+
+{% block menu %}
+<div class="menu_block">
+    <ul>
+        <li class="active"><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="#" style="color: black;">Share</a></li>
+    </ul>
+</div>
+
+{% endblock menu %}
+
+{% block body %}
+
+<div class="main__block">
+    <div class="heading">
+        <h1>About Me</h1>
+    </div>
+    <div class="conatiner">
+        <!-------- about item ------------------ -->
+        <div class="about_item">
+            <div class="image_block">
+                <img src="{%static 'images/aditya.jpg' %}" alt="">
+            </div>
+            <div class="details_block">
+                <h3>Aditya Chandrikapure</h3>
+                <p>Id : 19007002</p>
+                <p>Government college of engineering Amravati</p>
+            </div>
+        </div>
+        <!-------- about item ------------------ -->
+    </div>
+
+</div>
+{% endblock body %}

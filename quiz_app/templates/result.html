@@ -1,0 +1,86 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}Result | Quiz App{% endblock title %}
+
+{% block css_link %} 
+   <link rel="stylesheet" href="{% static 'css/result.css' %}">
+{% endblock css_link %}
+
+{% block menu %}
+            <div class="menu_block">
+               <ul>
+                  <li class="active"><a href="{% url 'about' %}">About Us</a></li>
+                  <li><a href="#" style="color: black;">Share</a></li>
+               </ul>
+            </div>
+{% endblock menu %}
+
+
+{% block body %}
+<div class="main__block">
+   <div class="heading">
+      <h2>Result</h2>
+   </div>
+   <div class="summary_block">
+      <h2>Summary</h2>
+      <div class="summary_content">
+         <p class="summary_subject_content">Subject : <span>{{subject}}</span></p>
+         <div class="summary_status">
+            <p>Correct Answer : <span>  {{correct}}</span></p>
+            <p>Wrong Answer : <span>  {{wrong}}</span></p>
+            <p>Not attempted :  <span> {{not_attempt}}</span></p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div class="all_question_ans_block">
+   <h2>Detail Summary</h2>
+   <p>(Note : The green block is <span>correct</span>  answer,red block <span>wrong</span> and gray <span>not attempted.</span> )</p>
+   {% if questions %}
+      {% for question in questions %}
+            {% for data in all_data %}
+               {% if data.1 == question.id %}
+                        <div class="resultblock" data-value="{{data.0}}" >
+                           <h4>Que {{forloop.counter}} ) {{question.question}}</h4>
+                           <div class="ans_block">
+                              <p>Correct Ans : <span> {{question.answer}}</span></p>
+                              <p> Your Ans : <span> {{data.2}}</span></p>
+                           </div>
+                        </div>
+                  {% endif %}
+            {% endfor %}
+      {% endfor %}
+   {% endif %}
+</div>
+
+<div class="home_block">
+   <a href="{% url 'home' %}">Home</a>
+</div>
+{% endblock body %}
+
+
+
+{% block js_file %}
+      <script>
+         const que_container = document.querySelectorAll('.resultblock');
+
+         que_container.forEach((question) =>
+         {
+            const data =  question.getAttribute('data-value');
+            if (data == "No")
+            {
+               question.style.background = "rgb(250, 89, 89)";
+            }
+            else if(data == "Not")
+            {
+               question.style.background = "rgb(233, 233, 233)";
+            }
+            else
+            {
+               question.style.background = "rgb(24, 207, 24)";
+            }
+         })
+      </script>
+{% endblock js_file %}
