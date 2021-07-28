@@ -1,0 +1,65 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}  Question | Quiz App  {% endblock title %}
+
+{% block css_link %}
+ <link rel="stylesheet" href="{% static 'css/question.css' %}">
+
+{% endblock css_link %}
+
+{% block menu %}
+     <div class="menu_block">
+            <ul>
+                <li class="active"><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}" style="color: black;" >About Us</a></li>
+                <li><a href="#" style="color: black;">Share</a></li>
+            </ul>
+        </div>
+
+{% endblock menu %}
+
+
+{% block body %}
+        <div class="main__block">
+            <div class="heading">
+                <h2>Subject : <span>{{subject}}</span></h2>
+            </div>
+            <div class="que_info_block">
+                <h4>MCQ Question (one Correct)</h4>
+                <h4>Total Que : {{total}} Que</h4>
+            </div>
+            <div class="questions_items">
+                <form action="/ans/" method="POST">
+                {% csrf_token %}
+                    {% if questions %}
+                            {% for question in questions %}
+                            <div class="question_block">
+                                <h4>Que {{forloop.counter}} ) {{question.question}}</h4>
+                                <div class="option_block">
+                                    <div class="option">
+                                        <input type="radio" name="{{question.id}}" id="" value="{{question.option_1}}"><span class="options">{{question.option_1}}</span>
+                                    </div>
+                                    <div class="option">
+                                        <input type="radio" name="{{question.id}}" id="" value="{{question.option_2}}"><span class="options">{{question.option_2}}</span>
+                                    </div>
+                                    <div class="option">
+                                        <input type="radio" name="{{question.id}}" id="" value="{{question.option_3}}"><span class="options">{{question.option_3}}</span>
+                                    </div>
+                                    <div class="option">
+                                        <input type="radio" name="{{question.id}}" id="" value="{{question.option_4}}"><span class="options">{{question.option_4}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                    {% endif %}
+                <input type="text" name="subject" id="subject" value="{{subject}}">
+                <div class="btn_block">
+                    <button type="submit"> Submit </button>
+                    <a href="{% url 'home' %}">Cancel</a>
+                </div>
+            </form>
+
+            </div>
+        </div>
+{% endblock body %}

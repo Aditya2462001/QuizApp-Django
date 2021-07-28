@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Quiz App{% endblock title %} </title>
+    <link rel="icon" href="{% static 'images/quiz-1.png' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+    {% block css_link %}
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    {% endblock css_link %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo_block">
+            <div class="logo_img">
+                <img src="{% static 'images/quiz.png' %}" alt="logo">
+            </div>
+            <div class="logo_name">
+                <h2><a href="#">Quiz App</a></h2>
+            </div>
+        </div>
+    {% block menu %}
+        <div class="menu_block">
+            <ul>
+                <li class="active"><a href="{% url 'about' %}">About Me</a></li>
+                <li><a href="#">Share</a></li>
+            </ul>
+        </div>
+    {% endblock menu %}
+</nav>
+
+{% block body %}
+<div class="main__block">
+    <div class="header_block">
+        <div class="left_header_block">
+            <h2>Welcome to Quiz App</h2>
+            <p>Here you find the mcq question that you want</p>
+            <button class="start_btn">Start Quiz</button>
+        </div>
+        <div class="right_header_block">
+            <img src="{% static 'images/img1.svg' %}" alt="">
+        </div>
+    </div>
+    <!----------------------------- subject container --------------------------------------- -->
+    <div class="subject_container">
+        <div class="heading">
+            <h3>Subjects</h3>
+        </div>
+        <div class="all_sub_items">
+            <!------------------- subject block start ------------------- -->
+            {% if subjects %}
+                {% for subject in subjects %}
+                <div class="subject_block">
+                    <a href="/questions/{{subject.id }}"> {{subject.name}} </a>
+                </div>
+                {% endfor %}
+            {% endif %}
+            <!------------------- subject block start ------------------- -->
+
+        </div>
+
+    </div>
+     <!----------------------------- subject container --------------------------------------- -->
+</div>
+
+{% endblock body %}
+
+<div class="footer">
+    <p>Created by Aditya Chandrikapure</p>
+</div>
+
+{% block js_file %}
+<script>
+    const start_btn = document.querySelector('.start_btn');
+    start_btn.addEventListener("click",() =>
+    {
+    window.scroll({
+        top: 750,
+        left:0,
+        behavior: 'smooth'
+    });
+})
+window.scroll({
+        top: 0,
+        left:0,
+        behavior: 'smooth'
+    });
+</script>
+
+{% endblock js_file %}
+</body>
+</html>
