@@ -4,8 +4,8 @@ This project helps students to practices more mcq questions subject wise, and he
 and the which one is correct and which one is wrong with your answer and the predefinied answer. The project is made in
 django framework which most famous framework for web developement which is use for backend mostly and also in frontend.
 
-##Features of Quiz App:
-###1] The main feature of the projects has very easy and instrasting Ui. any user can handle easily.
+## Features of Quiz App:
+### 1] The main feature of the projects has very easy and instrasting Ui. any user can handle easily.
 2] There are multiple pages of different task.
 3] In main page giving the Subject list , user can be choose which one he want to be.
 4] All the subject and questions are came from the backend.
